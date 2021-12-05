@@ -53,3 +53,13 @@ func Fold(acc int, f func(a, b int) int, is []int) int {
 func Sum(is []int) int {
 	return Fold(0, func(a, b int) int { return a + b }, is)
 }
+
+func SumIf(is []int, bs []bool) int {
+	total := 0
+	for i, n := range is {
+		if bs[i] {
+			total += n
+		}
+	}
+	return total
+}
