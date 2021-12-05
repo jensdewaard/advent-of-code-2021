@@ -32,3 +32,15 @@ func MapToInt(f func(string) int, ss []string) []int {
 	}
 	return is
 }
+
+func SliceEqual(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}

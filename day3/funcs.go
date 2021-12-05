@@ -79,3 +79,13 @@ func Invert(b BitString) BitString {
 	}
 	return out
 }
+
+func Filter(predicate func(b BitString) bool, bs []BitString) []BitString {
+	out := make([]BitString, 0)
+	for _, b := range bs {
+		if predicate(b) {
+			out = append(out, b)
+		}
+	}
+	return out
+}
