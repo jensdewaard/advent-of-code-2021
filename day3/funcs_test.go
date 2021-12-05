@@ -20,7 +20,17 @@ func Test_Count(t *testing.T) {
 		{
 			BitCount{"0", 1},
 			"1",
+			BitCount{"0", 0},
+		},
+		{
+			BitCount{"0", 0},
+			"1",
 			BitCount{"1", 1},
+		},
+		{
+			BitCount{"1", 0},
+			"0",
+			BitCount{"0", 1},
 		},
 		{
 			BitCount{},

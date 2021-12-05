@@ -15,16 +15,9 @@ func Count(state BitCount, bit string) BitCount {
 		if state.Count == 0 {
 			return BitCount{bit, 1}
 		}
-		if state.Count == 1 {
-			return BitCount{
-				Bit:   bit,
-				Count: 1,
-			}
-		} else {
-			return BitCount{
-				Bit:   state.Bit,
-				Count: state.Count - 1,
-			}
+		return BitCount{
+			Bit:   state.Bit,
+			Count: state.Count - 1,
 		}
 	}
 }
