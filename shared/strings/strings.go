@@ -5,6 +5,18 @@ import (
 	"strconv"
 )
 
+func Append(a, b string) string {
+	return a + b
+}
+
+func MapToString(f func(string) string, ss []string) []string {
+	out := make([]string, len(ss))
+	for i, s := range ss {
+		out[i] = f(s)
+	}
+	return ss
+}
+
 func ParseInt(s string) int {
 	i, err := strconv.Atoi(s)
 	if err != nil {
