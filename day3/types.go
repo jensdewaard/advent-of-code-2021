@@ -6,3 +6,5 @@ type BitCount struct {
 	Bit   string
 	Count int
 }
+
+type BitStringFilter func(BitString) bool
