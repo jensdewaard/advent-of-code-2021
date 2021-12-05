@@ -7,6 +7,7 @@ import (
 	"github.com/jensdewaard/advent-of-code-2021/day2"
 	"github.com/jensdewaard/advent-of-code-2021/day3"
 	"github.com/jensdewaard/advent-of-code-2021/day4"
+	"github.com/jensdewaard/advent-of-code-2021/day5"
 )
 
 func main() {
@@ -28,8 +29,11 @@ func main() {
 	case "4":
 		println(day4.SolveA())
 		println(day4.SolveB())
+	case "5":
+		println(day5.SolveA())
+		println(day5.SolveB())
 	default:
-		println(day4.SolveA())
-		println(day4.SolveB())
+		println(day5.SolveA())
+		println(day5.SolveB())
 	}
 }

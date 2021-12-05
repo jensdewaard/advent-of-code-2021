@@ -3,6 +3,7 @@ package strings
 import (
 	"log"
 	"strconv"
+	"strings"
 )
 
 func Append(a, b string) string {
@@ -43,4 +44,12 @@ func SliceEqual(a, b []string) bool {
 		}
 	}
 	return true
+}
+
+func Split(s string, sep string) []string {
+	return strings.Split(s, sep)
+}
+
+func Fields(s string) []string {
+    return strings.Fields(s)
 }
