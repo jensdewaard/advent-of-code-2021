@@ -8,6 +8,14 @@ func MapSlicesToInt(f func([]int) int, as [][]int) []int {
 	return bs
 }
 
+func FlatMapToInt(f func(int) []int, as []int) []int {
+	bs := make([]int, 0)
+	for _, a := range as {
+		bs = append(bs, f(a)...)
+	}
+	return bs
+}
+
 func ZipToBool(f func(int, int) bool, as, bs []int) []bool {
 	is := make([]bool, len(as))
 	for i, a := range as {
