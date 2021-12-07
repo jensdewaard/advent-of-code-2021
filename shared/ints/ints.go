@@ -1,5 +1,7 @@
 package ints
 
+import "math"
+
 func MapSlicesToInt(f func([]int) int, as [][]int) []int {
 	bs := make([]int, len(as))
 	for i, a := range as {
@@ -98,4 +100,32 @@ func Abs(i int) int {
 
 func Diff(a, b int) int {
 	return Abs(a - b)
+}
+
+func Max(is []int) (int, int) {
+	index := 0
+	l := math.MinInt
+	for i, v := range is {
+		if v > l {
+			l = v
+			index = i
+		}
+	}
+	return index, l
+}
+
+func Min(is []int) (int, int) {
+	index := 0
+	l := math.MaxInt
+	for i, v := range is {
+		if v < l {
+			l = v
+			index = i
+		}
+	}
+	return index, l
+}
+
+func Average(is []int) int {
+	return Sum(is) / len(is)
 }

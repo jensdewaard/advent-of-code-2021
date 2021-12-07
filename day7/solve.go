@@ -9,19 +9,27 @@ import (
 )
 
 func SolveA() int {
-	input :=
-		strings.MapToInt(
-			strings.ParseInt,
-			strings.Split(
-				files.ReadLines("day7/input")[0],
-				",",
-			),
-		)
-	sort.Ints(input)
-	median := ints.Median(input)
-	return CalculateFuelUsage(median, input)
+	crabs := strings.MapToInt(
+		strings.ParseInt,
+		strings.Split(
+			files.ReadLines("day7/input")[0],
+			",",
+		),
+	)
+	sort.Ints(crabs)
+	median := ints.Median(crabs)
+	return CalculateFuelUsage(median, crabs, ints.Diff)
 }
 
 func SolveB() int {
-	return 0
+	crabs := strings.MapToInt(
+		strings.ParseInt,
+		strings.Split(
+			files.ReadLines("day7/input")[0],
+			",",
+		),
+	)
+	sort.Ints(crabs)
+	position := ints.Average(crabs)
+	return CalculateFuelUsage(position, crabs, CrabFuel)
 }
