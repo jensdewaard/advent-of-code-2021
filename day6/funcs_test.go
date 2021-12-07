@@ -39,7 +39,7 @@ func Test_FishAfterDays(t *testing.T) {
 		{256, []Fish{3, 4, 3, 1, 2}, 26984457539},
 	}
 	for _, tt := range tests {
-		actual := FishAfterDays(tt.days, tt.start)
+		actual := FishAfterDaysSlice(tt.days, tt.start)
 		if actual != tt.expected {
 			t.Errorf("expected %v, got %v", tt.expected, actual)
 		}

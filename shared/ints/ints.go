@@ -8,6 +8,14 @@ func MapSlicesToInt(f func([]int) int, as [][]int) []int {
 	return bs
 }
 
+func MapToInt(f func(int) int, as []int) []int {
+	bs := make([]int, len(as))
+	for i, a := range as {
+		bs[i] = f(a)
+	}
+	return bs
+}
+
 func FlatMapToInt(f func(int) []int, as []int) []int {
 	bs := make([]int, 0)
 	for _, a := range as {
