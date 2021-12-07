@@ -79,3 +79,23 @@ func SumIf(is []int, bs []bool) int {
 	}
 	return total
 }
+
+func Median(is []int) int {
+	l := len(is)
+	if l%2 == 2 {
+		return (is[l/2-1] + is[l/2]) / 2
+	} else {
+		return is[l/2]
+	}
+}
+
+func Abs(i int) int {
+	if i < 0 {
+		return -1 * i
+	}
+	return i
+}
+
+func Diff(a, b int) int {
+	return Abs(a - b)
+}
