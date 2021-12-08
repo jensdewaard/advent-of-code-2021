@@ -57,3 +57,24 @@ func Fields(s string) []string {
 func Join(ss []string, sep string) string {
 	return strings.Join(ss, sep)
 }
+
+func Filter(predicate func(string) bool, ss []string) []string {
+	out := make([]string, 0)
+	for _, s := range ss {
+		if predicate(s) {
+			out = append(out, s)
+		}
+	}
+	return out
+}
+
+func ContainsRune(s string, r rune) bool {
+	return strings.ContainsRune(s, r)
+}
+
+func FoldToString(acc string, f func(string, string) string, ss []string) string {
+	for _, s := range ss {
+		acc = f(acc, s)
+	}
+	return acc
+}
