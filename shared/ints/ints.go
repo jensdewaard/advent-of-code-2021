@@ -129,3 +129,17 @@ func Min(is []int) (int, int) {
 func Average(is []int) int {
 	return Sum(is) / len(is)
 }
+
+func Filter(predicate func(int) bool, is []int) []int {
+	out := make([]int, 0)
+	for _, i := range is {
+		if predicate(i) {
+			out = append(out, i)
+		}
+	}
+	return out
+}
+
+func CountIf(predicate func(int) bool, is []int) int {
+	return len(Filter(predicate, is))
+}

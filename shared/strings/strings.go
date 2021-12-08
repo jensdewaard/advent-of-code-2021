@@ -15,7 +15,7 @@ func MapToString(f func(string) string, ss []string) []string {
 	for i, s := range ss {
 		out[i] = f(s)
 	}
-	return ss
+	return out
 }
 
 func ParseInt(s string) int {
@@ -51,5 +51,9 @@ func Split(s string, sep string) []string {
 }
 
 func Fields(s string) []string {
-    return strings.Fields(s)
+	return strings.Fields(s)
+}
+
+func Join(ss []string, sep string) string {
+	return strings.Join(ss, sep)
 }
