@@ -72,6 +72,10 @@ func Sum(is []int) int {
 	return Fold(0, func(a, b int) int { return a + b }, is)
 }
 
+func Mult(x, y int) int {
+    return x * y
+}
+
 func SumIf(is []int, bs []bool) int {
 	total := 0
 	for i, n := range is {
