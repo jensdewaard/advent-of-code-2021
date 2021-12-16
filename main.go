@@ -6,6 +6,7 @@ import (
 	"github.com/jensdewaard/advent-of-code-2021/day1"
 	"github.com/jensdewaard/advent-of-code-2021/day10"
 	"github.com/jensdewaard/advent-of-code-2021/day11"
+	"github.com/jensdewaard/advent-of-code-2021/day12"
 	"github.com/jensdewaard/advent-of-code-2021/day2"
 	"github.com/jensdewaard/advent-of-code-2021/day3"
 	"github.com/jensdewaard/advent-of-code-2021/day4"
@@ -56,8 +57,11 @@ func main() {
 	case "11":
 		println(day11.SolveA())
 		println(day11.SolveB())
+	case "12":
+		println(day12.SolveA())
+		println(day12.SolveB())
 	default:
-		println(day11.SolveA())
-		println(day11.SolveB())
+		println(day12.SolveA())
+		println(day12.SolveB())
 	}
 }
