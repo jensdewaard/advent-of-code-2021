@@ -73,7 +73,7 @@ func Sum(is []int) int {
 }
 
 func Mult(x, y int) int {
-    return x * y
+	return x * y
 }
 
 func SumIf(is []int, bs []bool) int {
@@ -146,4 +146,8 @@ func Filter(predicate func(int) bool, is []int) []int {
 
 func CountIf(predicate func(int) bool, is []int) int {
 	return len(Filter(predicate, is))
+}
+
+func Add(a, b int) int {
+	return a + b
 }
