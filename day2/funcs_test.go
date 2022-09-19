@@ -1,6 +1,10 @@
 package day2
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/jensdewaard/advent-of-code-2021/shared"
+)
 
 func TestMove(t *testing.T) {
 	tests := []struct {
@@ -47,7 +51,7 @@ func TestFoldCommands(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		actual := FoldCommands(tt.start, tt.commands)
+		actual := shared.Fold(tt.start, Move, tt.commands)
 		if actual != tt.expected {
 			t.Errorf("expected %v, got %v", tt.expected, actual)
 		}
@@ -74,7 +78,7 @@ func TestFoldCommandsWithAim(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		actual := FoldCommandsWithAim(tt.start, tt.commands)
+		actual := shared.Fold(tt.start, MoveWithAim, tt.commands)
 		if actual != tt.expected {
 			t.Errorf("expected %v, got %v", tt.expected, actual)
 		}

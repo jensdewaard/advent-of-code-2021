@@ -40,26 +40,8 @@ func ParseBoards(ls []string) []Board {
 	return boards
 }
 
-func MapBoards(f func(Board) Board, bs []Board) []Board {
-	out := make([]Board, len(bs))
-	for i, b := range bs {
-		out[i] = f(b)
-	}
-	return out
-}
-
-func FilterBoards(predicate func(Board) bool, bs []Board) []Board {
-	out := make([]Board, 0)
-	for _, b := range bs {
-		if predicate(b) {
-			out = append(out, b)
-		}
-	}
-	return out
-}
-
 func WonBoards(bs []Board) []Board {
-	return FilterBoards(
+	return shared.Filter(
 		func(b Board) bool {
 			return HasWon(b)
 		}, bs,

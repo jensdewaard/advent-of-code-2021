@@ -24,7 +24,7 @@ func SolveA() int {
 		markNumber := func(b Board) Board {
 			return Mark(b, numbersDrawn[index])
 		}
-		boards = MapBoards(markNumber, boards)
+		boards = shared.Map(markNumber, boards)
 		index++
 	}
 	wonBoards := WonBoards(boards)
@@ -47,8 +47,8 @@ func SolveB() int {
 		markNumber := func(b Board) Board {
 			return Mark(b, numbersDrawn[index])
 		}
-		boards = MapBoards(markNumber, boards)
-		boards = FilterBoards(
+		boards = shared.Map(markNumber, boards)
+		boards = shared.Filter(
 			func(b Board) bool {
 				return !HasWon(b)
 			}, boards,

@@ -54,20 +54,6 @@ func MoveWithAim(start LocationWithAim, command Command) LocationWithAim {
 	return start
 }
 
-func FoldCommands(acc Location, cs []Command) Location {
-	for _, c := range cs {
-		acc = Move(acc, c)
-	}
-	return acc
-}
-
-func FoldCommandsWithAim(acc LocationWithAim, cs []Command) LocationWithAim {
-	for _, c := range cs {
-		acc = MoveWithAim(acc, c)
-	}
-	return acc
-}
-
 func ParseCommand(s string) Command {
 	ss := strings.Split(s, " ")
 	switch ss[0] {
@@ -90,12 +76,4 @@ func ParseCommand(s string) Command {
 		log.Fatalf("could not parse command: %s", ss[0])
 	}
 	return Command{}
-}
-
-func MapStringsToCommands(ss []string) []Command {
-	cs := make([]Command, len(ss))
-	for i, s := range ss {
-		cs[i] = ParseCommand(s)
-	}
-	return cs
 }
