@@ -1,6 +1,7 @@
 package day8
 
 import (
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/files"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
@@ -8,7 +9,7 @@ import (
 
 func SolveA() int {
 	lines := files.ReadLines("day8/input")
-	outputs := strings.MapToString(
+	outputs := shared.Map(
 		func(s string) string {
 			return strings.Split(s, " | ")[1]
 		},
@@ -31,8 +32,10 @@ func SolveA() int {
 
 func SolveB() int {
 	lines := files.ReadLines("day8/input")
-	return ints.Sum(strings.MapToInt(
-		SolveForLine,
-		lines,
-	))
+	return ints.Sum(
+		shared.Map(
+			SolveForLine,
+			lines,
+		),
+	)
 }

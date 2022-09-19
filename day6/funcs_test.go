@@ -1,9 +1,10 @@
 package day6
 
 import (
+	"reflect"
 	"testing"
 
-	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 )
 
 func Test_Age(t *testing.T) {
@@ -18,11 +19,11 @@ func Test_Age(t *testing.T) {
 		{[]Fish{6, 8}, []Fish{5, 7}},
 	}
 	for _, tt := range tests {
-		actual := ints.FlatMapToInt(
+		actual := shared.FlatMap(
 			Age,
 			tt.fish,
 		)
-		if !ints.SliceEqual(actual, tt.expected) {
+		if !reflect.DeepEqual(actual, tt.expected) {
 			t.Errorf("expected %v, got %v", tt.expected, actual)
 		}
 	}

@@ -1,7 +1,7 @@
 package day4
 
 import (
-	"github.com/jensdewaard/advent-of-code-2021/shared/bools"
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
 )
 
@@ -59,12 +59,20 @@ func FilterBoards(predicate func(Board) bool, bs []Board) []Board {
 }
 
 func WonBoards(bs []Board) []Board {
-	return FilterBoards(func(b Board) bool {
-		return HasWon(b)
-	}, bs)
+	return FilterBoards(
+		func(b Board) bool {
+			return HasWon(b)
+		}, bs,
+	)
 }
 
 func Score(b Board, lastCalledNumber int) int {
-	sum := ints.SumIf(b.Numbers, bools.Invert(b.Marked))
+	sum := ints.SumIf(
+		b.Numbers, shared.Map(
+			func(s bool) bool {
+				return !s
+			}, b.Marked,
+		),
+	)
 	return sum * lastCalledNumber
 }

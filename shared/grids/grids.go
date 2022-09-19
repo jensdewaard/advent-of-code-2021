@@ -4,6 +4,7 @@ import (
 	"fmt"
 	str "strings"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
@@ -20,7 +21,7 @@ func NewGrid(x, y int) Grid {
 func ParseGrid(ss []string) Grid {
 	g := NewGrid(len(ss[0]), len(ss))
 	for y := 0; y < len(ss); y++ {
-		g[y] = strings.MapToInt(
+		g[y] = shared.Map(
 			strings.ParseInt,
 			strings.Split(ss[y], ""),
 		)
@@ -32,7 +33,7 @@ func SprintGrid(m Grid) string {
 	sb := str.Builder{}
 	for i := 0; i < len(m); i++ {
 		for j := 0; j < len(m[i]); j++ {
-			sb.WriteString(fmt.Sprint((m[j][i])))
+			sb.WriteString(fmt.Sprint(m[j][i]))
 		}
 		sb.WriteString("\n")
 	}

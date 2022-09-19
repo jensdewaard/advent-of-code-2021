@@ -5,13 +5,14 @@ import (
 	"log"
 	"strings"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	mystrings "github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
 func SolveA() int {
 	inputData, _ := ioutil.ReadFile("day4/input")
 	input := strings.Split(string(inputData), "\n")
-	numbersDrawn := mystrings.MapToInt(
+	numbersDrawn := shared.Map(
 		mystrings.ParseInt,
 		strings.Split(input[0], ","),
 	)
@@ -34,7 +35,7 @@ func SolveA() int {
 func SolveB() int {
 	inputData, _ := ioutil.ReadFile("day4/input")
 	input := strings.Split(string(inputData), "\n")
-	numbersDrawn := mystrings.MapToInt(
+	numbersDrawn := shared.Map(
 		mystrings.ParseInt,
 		strings.Split(input[0], ","),
 	)
@@ -47,9 +48,11 @@ func SolveB() int {
 			return Mark(b, numbersDrawn[index])
 		}
 		boards = MapBoards(markNumber, boards)
-		boards = FilterBoards(func(b Board) bool {
-			return !HasWon(b)
-		}, boards)
+		boards = FilterBoards(
+			func(b Board) bool {
+				return !HasWon(b)
+			}, boards,
+		)
 		index++
 	}
 	lastWinner := boards[0]

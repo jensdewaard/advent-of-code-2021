@@ -1,17 +1,18 @@
 package day7
 
 import (
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
 )
 
 func CalculateFuelUsage(position int, crabs []int, fuel func(int, int) int) int {
-	dists := ints.MapToInt(
+	distances := shared.Map(
 		func(i int) int {
 			return fuel(position, i)
 		},
 		crabs,
 	)
-	return ints.Sum(dists)
+	return ints.Sum(distances)
 }
 
 func CrabFuel(from, to int) int {

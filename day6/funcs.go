@@ -3,6 +3,7 @@ package day6
 import (
 	"fmt"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
 )
 
@@ -14,7 +15,7 @@ func Age(f Fish) []Fish {
 }
 
 func FishAfterDaysSlice(days int, fs []Fish) int {
-	perFish := ints.MapToInt(
+	perFish := shared.Map(
 		func(f Fish) int {
 			return FishAfterDaysSingle(days, f)
 		},

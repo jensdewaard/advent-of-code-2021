@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
@@ -86,14 +87,14 @@ func SolveForLine(l string) int {
 		),
 	)
 	outputs := strings.Fields(splitted[1])
-	os := strings.MapToString(
+	os := shared.Map(
 		func(ls LitSegments) string {
 			return fmt.Sprint(Decode(ls, rs))
 		},
 		outputs,
 	)
 	return strings.ParseInt(
-		strings.FoldToString("", strings.Append, os),
+		shared.Fold("", strings.Append, os),
 	)
 }
 

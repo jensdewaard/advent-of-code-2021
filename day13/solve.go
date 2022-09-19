@@ -3,6 +3,7 @@ package day13
 import (
 	"fmt"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/files"
 	"github.com/jensdewaard/advent-of-code-2021/shared/grids"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
@@ -20,7 +21,8 @@ func SolveA() int {
 	} else if folds[0].Type == "v" {
 		paper = FoldPaperHorizontally(paper, folds[0].Line)
 	}
-	return ints.Fold(0, ints.Add, grids.FoldGridLines(0, ints.Add, paper))
+	foldedGrid := grids.FoldGridLines(0, ints.Add, paper)
+	return shared.Fold(0, ints.Add, foldedGrid)
 }
 
 func SolveB() int {
@@ -37,7 +39,7 @@ func SolveB() int {
 		}
 	}
 	fmt.Print(SprintPaper(paper))
-	return ints.Fold(0, ints.Add, grids.FoldGridLines(0, ints.Add, paper))
+	return shared.Fold(0, ints.Add, grids.FoldGridLines(0, ints.Add, paper))
 }
 
 func ParseInput(ss []string) ([]grids.Position, []Fold) {
@@ -56,10 +58,12 @@ func ParseInput(ss []string) ([]grids.Position, []Fold) {
 			}
 		} else {
 			locs := strings.Split(s, ",")
-			ps = append(ps, grids.Position{
-				X: strings.ParseInt(locs[0]),
-				Y: strings.ParseInt(locs[1]),
-			})
+			ps = append(
+				ps, grids.Position{
+					X: strings.ParseInt(locs[0]),
+					Y: strings.ParseInt(locs[1]),
+				},
+			)
 		}
 	}
 	return ps, fs

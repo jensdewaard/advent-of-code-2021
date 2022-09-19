@@ -1,71 +1,13 @@
 package ints
 
-import "math"
+import (
+	"math"
 
-func MapSlicesToInt(f func([]int) int, as [][]int) []int {
-	bs := make([]int, len(as))
-	for i, a := range as {
-		bs[i] = f(a)
-	}
-	return bs
-}
-
-func MapToInt(f func(int) int, as []int) []int {
-	bs := make([]int, len(as))
-	for i, a := range as {
-		bs[i] = f(a)
-	}
-	return bs
-}
-
-func FlatMapToInt(f func(int) []int, as []int) []int {
-	bs := make([]int, 0)
-	for _, a := range as {
-		bs = append(bs, f(a)...)
-	}
-	return bs
-}
-
-func ZipToBool(f func(int, int) bool, as, bs []int) []bool {
-	is := make([]bool, len(as))
-	for i, a := range as {
-		is[i] = f(a, bs[i])
-	}
-	return is
-}
+	. "github.com/jensdewaard/advent-of-code-2021/shared"
+)
 
 func LessThan(a, b int) bool {
 	return a < b
-}
-
-func Window(k int, is []int) [][]int {
-	out := make([][]int, len(is)-k+1)
-	i := 0
-	for i+k <= len(is) {
-		out[i] = make([]int, k)
-		copy(out[i], is[i:i+(k)])
-		i++
-	}
-	return out
-}
-
-func SliceEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
-func Fold(acc int, f func(a, b int) int, is []int) int {
-	for i := range is {
-		acc = f(acc, is[i])
-	}
-	return acc
 }
 
 func Sum(is []int) int {
@@ -132,20 +74,6 @@ func Min(is []int) (int, int) {
 
 func Average(is []int) int {
 	return Sum(is) / len(is)
-}
-
-func Filter(predicate func(int) bool, is []int) []int {
-	out := make([]int, 0)
-	for _, i := range is {
-		if predicate(i) {
-			out = append(out, i)
-		}
-	}
-	return out
-}
-
-func CountIf(predicate func(int) bool, is []int) int {
-	return len(Filter(predicate, is))
 }
 
 func Add(a, b int) int {

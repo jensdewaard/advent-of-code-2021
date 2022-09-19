@@ -3,9 +3,9 @@ package day10
 import (
 	"sort"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/files"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
-	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
 func SolveA() int {
@@ -30,7 +30,7 @@ func SolveB() int {
 		return l.err == "incomplete"
 	}
 	ds := Filter(filter, MapToStatus(parse, lines))
-	scores := strings.MapToInt(
+	scores := shared.Map(
 		ScoreMissing,
 		MapToString(func(ls LineStatus) string { return ls.missing }, ds),
 	)

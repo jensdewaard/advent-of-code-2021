@@ -1,9 +1,8 @@
 package day3
 
 import (
+	"reflect"
 	"testing"
-
-	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
 func Test_Count(t *testing.T) {
@@ -110,7 +109,7 @@ func Test_Filter(t *testing.T) {
 	}
 	for _, tt := range tests {
 		actual := Filter(tt.p, tt.bs)
-		if !strings.SliceEqual(actual, tt.expected) {
+		if !reflect.DeepEqual(actual, tt.expected) {
 			t.Errorf("expected %v, got %v", tt.expected, actual)
 		}
 	}

@@ -5,6 +5,7 @@ import (
 
 	str "strings"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
@@ -34,7 +35,7 @@ func GetInt(m IntGrid, p Position) int {
 func ParseGrid(ss []string) IntGrid {
 	g := NewIntGrid(len(ss[0]), len(ss))
 	for y := 0; y < len(ss); y++ {
-		g[y] = strings.MapToInt(
+		g[y] = shared.Map(
 			strings.ParseInt,
 			strings.Split(ss[y], ""),
 		)

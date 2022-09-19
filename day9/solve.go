@@ -3,6 +3,7 @@ package day9
 import (
 	"sort"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/files"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
@@ -12,7 +13,7 @@ func SolveA() int {
 	lines := files.ReadLines("day9/input")
 	g := NewGrid(len(lines[0]), len(lines))
 	for y := 0; y < len(lines); y++ {
-		g[y] = strings.MapToInt(strings.ParseInt, strings.Split(lines[y], ""))
+		g[y] = shared.Map(strings.ParseInt, strings.Split(lines[y], ""))
 	}
 	ls := Filter(IsLowPoint, g)
 	calcRisk := func(p Position) int { return Risk(g, p) }
@@ -24,7 +25,7 @@ func SolveB() int {
 	lines := files.ReadLines("day9/input")
 	g := NewGrid(len(lines[0]), len(lines))
 	for y := 0; y < len(lines); y++ {
-		g[y] = strings.MapToInt(strings.ParseInt, strings.Split(lines[y], ""))
+		g[y] = shared.Map(strings.ParseInt, strings.Split(lines[y], ""))
 	}
 	ls := Filter(IsLowPoint, g)
 	bs := make([][]Position, len(ls))
@@ -36,5 +37,5 @@ func SolveB() int {
 		ss[i] = len(b)
 	}
 	sort.Ints(ss)
-	return ints.Fold(1, ints.Mult, ss[len(ss)-3:])
+	return shared.Fold(1, ints.Mult, ss[len(ss)-3:])
 }

@@ -1,6 +1,11 @@
 package ints
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+
+	"github.com/jensdewaard/advent-of-code-2021/shared"
+)
 
 func TestWindow(t *testing.T) {
 	var tests = []struct {
@@ -34,7 +39,7 @@ func TestWindow(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		var actual = Window(tt.k, tt.in)
+		var actual = shared.Window(tt.k, tt.in)
 		if len(actual) != len(tt.expected) {
 			t.Errorf(
 				"expected length %d, got length %d",
@@ -43,7 +48,7 @@ func TestWindow(t *testing.T) {
 			)
 		}
 		for i := range tt.expected {
-			if !SliceEqual(actual[i], tt.expected[i]) {
+			if !reflect.DeepEqual(actual[i], tt.expected[i]) {
 				t.Errorf("expected %d, got %d", tt.expected, actual)
 			}
 		}
@@ -65,7 +70,7 @@ func TestFold(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		actual := Fold(tt.acc, tt.f, tt.is)
+		actual := shared.Fold(tt.acc, tt.f, tt.is)
 		if actual != tt.expected {
 			t.Errorf("expected %d, got %d", tt.expected, actual)
 		}

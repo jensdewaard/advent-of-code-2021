@@ -3,13 +3,14 @@ package day7
 import (
 	"sort"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/files"
 	"github.com/jensdewaard/advent-of-code-2021/shared/ints"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
 
 func SolveA() int {
-	crabs := strings.MapToInt(
+	crabs := shared.Map(
 		strings.ParseInt,
 		strings.Split(
 			files.ReadLines("day7/input")[0],
@@ -22,7 +23,7 @@ func SolveA() int {
 }
 
 func SolveB() int {
-	crabs := strings.MapToInt(
+	crabs := shared.Map(
 		strings.ParseInt,
 		strings.Split(
 			files.ReadLines("day7/input")[0],
