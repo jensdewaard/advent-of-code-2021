@@ -55,3 +55,17 @@ func FlatMap[S, T any](f func(S) []T, as []S) []T {
 	}
 	return bs
 }
+
+func Repeat[T any](a T, f func(T) T, count int) T {
+	for i := 0; i < count; i++ {
+		a = f(a)
+	}
+	return a
+}
+
+func RepeatWhile[T any](a T, f func(T) T, condition func() bool) T {
+	for condition() {
+		a = f(a)
+	}
+	return a
+}

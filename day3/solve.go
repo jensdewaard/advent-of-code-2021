@@ -3,6 +3,7 @@ package day3
 import (
 	"log"
 
+	"github.com/jensdewaard/advent-of-code-2021/shared"
 	"github.com/jensdewaard/advent-of-code-2021/shared/files"
 	"github.com/jensdewaard/advent-of-code-2021/shared/strings"
 )
@@ -66,7 +67,7 @@ func RepeatFilter(lines []BitString, filter func([]BitCount, int) BitStringFilte
 			},
 			candidates,
 		)
-		candidates = Filter(filter(occurences, index), candidates)
+		candidates = shared.Filter(filter(occurences, index), candidates)
 		index++
 	}
 	if len(candidates) != 1 {

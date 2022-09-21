@@ -36,7 +36,8 @@ func ZipWith(f func(BitCount, string) BitCount, bs []BitCount, ss string) []BitC
 func FoldToBitCount(
 	acc []BitCount,
 	f func([]BitCount, string) []BitCount,
-	ss []string) []BitCount {
+	ss []string,
+) []BitCount {
 	for _, s := range ss {
 		acc = f(acc, s)
 	}
@@ -68,16 +69,6 @@ func Invert(b BitString) BitString {
 			out += "1"
 		} else {
 			out += "0"
-		}
-	}
-	return out
-}
-
-func Filter(predicate func(b BitString) bool, bs []BitString) []BitString {
-	out := make([]BitString, 0)
-	for _, b := range bs {
-		if predicate(b) {
-			out = append(out, b)
 		}
 	}
 	return out
